@@ -35,7 +35,7 @@ resource "azurerm_lb_rule" "loadbalancer-TCP443-lbr" {
   frontend_port                  = 443
   backend_port                   = 443
   frontend_ip_configuration_name = "${local.vm-name}-lbfe"
-  backend_address_pool_id        = azurerm_lb_backend_address_pool[0].loadbalancer-VPXServers-lbbp.id
+  backend_address_pool_id        = azurerm_lb_backend_address_pool.loadbalancer-VPXServers-lbbp[0].id
   probe_id                       = azurerm_lb_probe.loadbalancer-TCP9000-lbhp[0].id
   load_distribution              = "Default"
 }
