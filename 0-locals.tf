@@ -15,5 +15,6 @@ locals {
   serverType_3                  = substr(var.serverType, 0, 3)
   userDefinedString_7           = substr(var.userDefinedString, 0, 7)
   prefix                        = replace("${local.env_4}${local.serverType_3}-${local.userDefinedString_7}", local.windows_virtual_machine_regex, "")
+  postfix_3                     = substr(var.postfix, 0, 3)
   vm-name                       = replace("${local.env_4}${local.serverType_3}-${local.userDefinedString_7}${local.postfix_3}", local.windows_virtual_machine_regex, "")
 }
