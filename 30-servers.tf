@@ -51,9 +51,9 @@ resource azurerm_network_interface NIC2-1 {
 
 resource "azurerm_network_interface_backend_address_pool_association" "NIC2-1" {
   count                         = var.deploy ? 1 : 0
-  network_interface_id    = azurerm_network_interface.NIC2-1.id
+  network_interface_id    = azurerm_network_interface.NIC2-1[0].id
   ip_configuration_name   = "ipconfig1"
-  backend_address_pool_id = azurerm_lb_backend_address_pool.loadbalancer-VPXServers-lbbp.id
+  backend_address_pool_id = azurerm_lb_backend_address_pool.loadbalancer-VPXServers-lbbp[0].id
 }
 
 # Server
@@ -121,9 +121,9 @@ resource azurerm_network_interface NIC2-2 {
 
 resource "azurerm_network_interface_backend_address_pool_association" "NIC2-2" {
   count                         = var.deploy ? 1 : 0
-  network_interface_id    = azurerm_network_interface.NIC2-2.id
+  network_interface_id    = azurerm_network_interface.NIC2-2[0].id
   ip_configuration_name   = "ipconfig1"
-  backend_address_pool_id = azurerm_lb_backend_address_pool.loadbalancer-VPXServers-lbbp.id
+  backend_address_pool_id = azurerm_lb_backend_address_pool.loadbalancer-VPXServers-lbbp[0].id
 }
 
 # Server
@@ -161,8 +161,8 @@ resource azurerm_linux_virtual_machine VM1 {
   size                            = var.vm_size
   priority                        = var.priority
   eviction_policy                 = local.eviction_policy
-  network_interface_ids           = [azurerm_network_interface.NIC1-1.id, azurerm_network_interface.NIC2-1.id, azurerm_network_interface.NIC3-1.id]
-  availability_set_id             = azurerm_availability_set.availabilityset.id
+  network_interface_ids           = [azurerm_network_interface.NIC1-1[0].id, azurerm_network_interface.NIC2-1[0].id, azurerm_network_interface.NIC3-1[0].id]
+  availability_set_id             = azurerm_availability_set.availabilityset[0].id
   source_image_reference {
     publisher = var.storage_image_reference.publisher
     offer     = var.storage_image_reference.offer
@@ -207,8 +207,8 @@ resource azurerm_linux_virtual_machine VM2 {
   size                            = var.vm_size
   priority                        = var.priority
   eviction_policy                 = local.eviction_policy
-  network_interface_ids           = [azurerm_network_interface.NIC1-2.id, azurerm_network_interface.NIC2-2.id, azurerm_network_interface.NIC3-2.id]
-  availability_set_id             = azurerm_availability_set.availabilityset.id
+  network_interface_ids           = [azurerm_network_interface.NIC1-2[0].id, azurerm_network_interface.NIC2-2[0].id, azurerm_network_interface.NIC3-2[0].id]
+  availability_set_id             = azurerm_availability_set.availabilityset[0].id
   source_image_reference {
     publisher = var.storage_image_reference.publisher
     offer     = var.storage_image_reference.offer
