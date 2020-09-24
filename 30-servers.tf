@@ -190,6 +190,16 @@ resource azurerm_linux_virtual_machine VM1 {
       storage_account_uri = azurerm_storage_account.boot_diagnostic[0].primary_blob_endpoint
     }
   }
+  lifecycle {
+    ignore_changes = [
+      # Ignore changes to username and password because it will require destroying and
+      # recreating the VM and all associated resources. It is better handled within the VM post deployment.
+      # This will prevent disastrous destruction in case someone plan a name and password change.
+      admin_username,
+      admin_password,
+      identity,
+    ]
+  }
   tags = var.tags
 }
 
@@ -235,6 +245,16 @@ resource azurerm_linux_virtual_machine VM2 {
     content {
       storage_account_uri = azurerm_storage_account.boot_diagnostic[0].primary_blob_endpoint
     }
+  }
+  lifecycle {
+    ignore_changes = [
+      # Ignore changes to username and password because it will require destroying and
+      # recreating the VM and all associated resources. It is better handled within the VM post deployment.
+      # This will prevent disastrous destruction in case someone plan a name and password change.
+      admin_username,
+      admin_password,
+      identity,
+    ]
   }
   tags = var.tags
 }
