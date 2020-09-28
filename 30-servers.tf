@@ -53,7 +53,7 @@ resource "azurerm_network_interface_backend_address_pool_association" "NIC2-1" {
   count                         = var.deploy ? 1 : 0
   network_interface_id    = azurerm_network_interface.NIC2-1[0].id
   ip_configuration_name   = "ipconfig1"
-  backend_address_pool_id = azurerm_lb_backend_address_pool.loadbalancer-VPXServers-lbbp[0].id
+  backend_address_pool_id = azurerm_lb_backend_address_pool.loadbalancer-VPXServers_paz-lbbp[0].id
 }
 
 # Server
@@ -75,6 +75,13 @@ resource azurerm_network_interface NIC3-1 {
 
   }
   tags = var.tags
+}
+
+resource "azurerm_network_interface_backend_address_pool_association" "NIC3-1" {
+  count                         = var.deploy ? 1 : 0
+  network_interface_id    = azurerm_network_interface.NIC3-1[0].id
+  ip_configuration_name   = "ipconfig1"
+  backend_address_pool_id = azurerm_lb_backend_address_pool.loadbalancer-VPXServers_oz-lbbp[0].id
 }
 
 # MGMT
@@ -123,7 +130,7 @@ resource "azurerm_network_interface_backend_address_pool_association" "NIC2-2" {
   count                         = var.deploy ? 1 : 0
   network_interface_id    = azurerm_network_interface.NIC2-2[0].id
   ip_configuration_name   = "ipconfig1"
-  backend_address_pool_id = azurerm_lb_backend_address_pool.loadbalancer-VPXServers-lbbp[0].id
+  backend_address_pool_id = azurerm_lb_backend_address_pool.loadbalancer-VPXServers_paz-lbbp[0].id
 }
 
 # Server
@@ -145,6 +152,13 @@ resource azurerm_network_interface NIC3-2 {
 
   }
   tags = var.tags
+}
+
+resource "azurerm_network_interface_backend_address_pool_association" "NIC3-2" {
+  count                         = var.deploy ? 1 : 0
+  network_interface_id    = azurerm_network_interface.NIC3-2[0].id
+  ip_configuration_name   = "ipconfig1"
+  backend_address_pool_id = azurerm_lb_backend_address_pool.loadbalancer-VPXServers_oz-lbbp[0].id
 }
 
 resource azurerm_linux_virtual_machine VM1 {

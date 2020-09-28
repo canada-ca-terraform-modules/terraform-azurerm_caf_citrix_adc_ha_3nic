@@ -61,7 +61,11 @@ variable "nic3_subnetName" {
   description = "Name of the subnet to which the VM NIC3 will connect to"
 }
 
-variable "lb_private_ip" {
+variable "lb_private_ip_paz" {
+  description = "Private IP for the Citrix LB in subnet 1"
+}
+
+variable "lb_private_ip_oz" {
   description = "Private IP for the Citrix LB in subnet 1"
 }
 
