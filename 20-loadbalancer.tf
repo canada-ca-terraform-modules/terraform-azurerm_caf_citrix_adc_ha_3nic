@@ -9,6 +9,7 @@ resource "azurerm_lb" "loadbalancer" {
     private_ip_address            = var.lb_private_ip
     subnet_id                     = data.azurerm_subnet.subnet2.id # Client
   }
+  sku = "Standard"
 }
 
 resource "azurerm_lb_probe" "loadbalancer-TCP9000-lbhp" {
